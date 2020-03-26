@@ -1,8 +1,22 @@
-<mvc:View controllerName="sapcp.tutorial.cf.ui.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<mvc:View controllerName="sapcp.tutorial.cf.ui.controller.View1" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:semantic="sap.f.semantic">
 	<Shell id="shell">
-		<App id="app">
+		<App id="app" class="sapUiSizeCompact">
 			<pages>
-				<MessagePage showHeader="false" description="More content to come" text="Stay tuned!" icon="sap-icon://home" />
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<smartTable:SmartTable entitySet="Orders" tableType="ResponsiveTable" enableAutoBinding="true" useExportToExcel="false"
+							class="sapUiResponsiveContentPadding"
+							initiallyVisibleFields="CustomerID,EmployeeID,Freight,OrderDate,OrderID,RequiredDate,ShipAddress,ShipCity,ShipCountry,ShipName,ShippedDate,ShipPostalCodeShipRegion,ShipVia">
+							<smartTable:customToolbar>
+								<OverflowToolbar>
+									<ToolbarSpacer/>
+									<OverflowToolbarButton id="uploadBtn" icon="sap-icon://upload-to-cloud" tooltip="Export Online" press="onUploadToOneDrive"/>
+								</OverflowToolbar>
+							</smartTable:customToolbar>
+						</smartTable:SmartTable>
+					</content>
+				</Page>
 			</pages>
 		</App>
 	</Shell>
