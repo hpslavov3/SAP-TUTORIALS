@@ -1,0 +1,23 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sapcp.cf.tutorial.app.controller.Detail"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>DetailTitle}" showNavButton="true" navButtonPress="handleNavButtonPress">
+		<ObjectHeader title="{ProductName}" number="{= ((${UnitPrice} * 100) / 100).toFixed(2)}" numberUnit="{i18n>currency}">
+			<statuses>
+				<ObjectStatus text="{= ${Discontinued}? 'Discontinued' : 'Available' }" state="{= ${Discontinued}? 'Error' : 'Success' }"/>
+				<ObjectStatus text="{= (${UnitsOnOrder} > 0) ? 'Ordered' : '' }" state="Success"/>
+			</statuses>
+			<attributes>
+				<ObjectAttribute text="Product #{ProductID}"/>
+				<ObjectAttribute text="Category #{CategoryID}"/>
+				<ObjectAttribute text="Supplier #{SupplierID}"/>
+			</attributes>
+		</ObjectHeader>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button text="{i18n>OrderButtonText}" type="Accept" icon="sap-icon://accept" press="handleOrder"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>
